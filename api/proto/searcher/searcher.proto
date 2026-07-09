@@ -1,0 +1,6 @@
+syntax = "proto 3";
+
+package api;
+
+service Searcher {
+}
