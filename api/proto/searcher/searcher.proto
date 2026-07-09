@@ -1,6 +1,21 @@
-syntax = "proto 3";
+syntax = "proto3";
 
 package api;
 
+option go_package = "github.com/pulse-fetch/protos";
+
 service Searcher {
+  rpc ProcessData (InputRequest) returns (OutputResponse);
+}
+
+message InputRequest {
+  repeated double items = 1;
+}
+
+message Row {
+  repeated double values = 1;
+}
+
+message OutputResponse {
+  repeated Row rows = 1;
 }
