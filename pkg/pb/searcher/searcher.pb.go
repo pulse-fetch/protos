@@ -65,60 +65,16 @@ func (x *InputRequest) GetItems() []float32 {
 	return nil
 }
 
-type Row struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        []float32              `protobuf:"fixed32,1,rep,packed,name=values,proto3" json:"values,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Row) Reset() {
-	*x = Row{}
-	mi := &file_searcher_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Row) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Row) ProtoMessage() {}
-
-func (x *Row) ProtoReflect() protoreflect.Message {
-	mi := &file_searcher_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Row.ProtoReflect.Descriptor instead.
-func (*Row) Descriptor() ([]byte, []int) {
-	return file_searcher_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *Row) GetValues() []float32 {
-	if x != nil {
-		return x.Values
-	}
-	return nil
-}
-
 type OutputResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Rows          []*Row                 `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	PossAnswers   []string               `protobuf:"bytes,1,rep,name=possAnswers,proto3" json:"possAnswers,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *OutputResponse) Reset() {
 	*x = OutputResponse{}
-	mi := &file_searcher_proto_msgTypes[2]
+	mi := &file_searcher_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +86,7 @@ func (x *OutputResponse) String() string {
 func (*OutputResponse) ProtoMessage() {}
 
 func (x *OutputResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_searcher_proto_msgTypes[2]
+	mi := &file_searcher_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,12 +99,12 @@ func (x *OutputResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OutputResponse.ProtoReflect.Descriptor instead.
 func (*OutputResponse) Descriptor() ([]byte, []int) {
-	return file_searcher_proto_rawDescGZIP(), []int{2}
+	return file_searcher_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *OutputResponse) GetRows() []*Row {
+func (x *OutputResponse) GetPossAnswers() []string {
 	if x != nil {
-		return x.Rows
+		return x.PossAnswers
 	}
 	return nil
 }
@@ -159,11 +115,9 @@ const file_searcher_proto_rawDesc = "" +
 	"\n" +
 	"\x0esearcher.proto\x12\x03api\"$\n" +
 	"\fInputRequest\x12\x14\n" +
-	"\x05items\x18\x01 \x03(\x02R\x05items\"\x1d\n" +
-	"\x03Row\x12\x16\n" +
-	"\x06values\x18\x01 \x03(\x02R\x06values\".\n" +
-	"\x0eOutputResponse\x12\x1c\n" +
-	"\x04rows\x18\x01 \x03(\v2\b.api.RowR\x04rows2A\n" +
+	"\x05items\x18\x01 \x03(\x02R\x05items\"2\n" +
+	"\x0eOutputResponse\x12 \n" +
+	"\vpossAnswers\x18\x01 \x03(\tR\vpossAnswers2A\n" +
 	"\bSearcher\x125\n" +
 	"\vProcessData\x12\x11.api.InputRequest\x1a\x13.api.OutputResponseB\x1fZ\x1dgithub.com/pulse-fetch/protosb\x06proto3"
 
@@ -179,21 +133,19 @@ func file_searcher_proto_rawDescGZIP() []byte {
 	return file_searcher_proto_rawDescData
 }
 
-var file_searcher_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_searcher_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_searcher_proto_goTypes = []any{
 	(*InputRequest)(nil),   // 0: api.InputRequest
-	(*Row)(nil),            // 1: api.Row
-	(*OutputResponse)(nil), // 2: api.OutputResponse
+	(*OutputResponse)(nil), // 1: api.OutputResponse
 }
 var file_searcher_proto_depIdxs = []int32{
-	1, // 0: api.OutputResponse.rows:type_name -> api.Row
-	0, // 1: api.Searcher.ProcessData:input_type -> api.InputRequest
-	2, // 2: api.Searcher.ProcessData:output_type -> api.OutputResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // 0: api.Searcher.ProcessData:input_type -> api.InputRequest
+	1, // 1: api.Searcher.ProcessData:output_type -> api.OutputResponse
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_searcher_proto_init() }
@@ -207,7 +159,7 @@ func file_searcher_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_searcher_proto_rawDesc), len(file_searcher_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

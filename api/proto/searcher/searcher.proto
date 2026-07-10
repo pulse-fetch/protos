@@ -12,10 +12,6 @@ message InputRequest {
   repeated float items = 1;
 }
 
-message Row {
-  repeated float values = 1;
-}
-
 message OutputResponse {
-  repeated Row rows = 1;
+  repeated string possAnswers= 1;
 }
