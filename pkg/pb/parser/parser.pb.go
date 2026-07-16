@@ -4,7 +4,7 @@
 // 	protoc        v7.35.1
 // source: parser.proto
 
-package protos
+package parser
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -21,27 +21,31 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type TriggerRequest struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	SpecificVkGroupId string                 `protobuf:"bytes,1,opt,name=specific_vk_group_id,json=specificVkGroupId,proto3" json:"specific_vk_group_id,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+type NewsEvent struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Text          string                 `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	Vector        []float32              `protobuf:"fixed32,3,rep,packed,name=vector,proto3" json:"vector,omitempty"`
+	Source        string                 `protobuf:"bytes,4,opt,name=source,proto3" json:"source,omitempty"`
+	CreatedAt     int64                  `protobuf:"varint,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TriggerRequest) Reset() {
-	*x = TriggerRequest{}
+func (x *NewsEvent) Reset() {
+	*x = NewsEvent{}
 	mi := &file_parser_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TriggerRequest) String() string {
+func (x *NewsEvent) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TriggerRequest) ProtoMessage() {}
+func (*NewsEvent) ProtoMessage() {}
 
-func (x *TriggerRequest) ProtoReflect() protoreflect.Message {
+func (x *NewsEvent) ProtoReflect() protoreflect.Message {
 	mi := &file_parser_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -53,175 +57,58 @@ func (x *TriggerRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TriggerRequest.ProtoReflect.Descriptor instead.
-func (*TriggerRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use NewsEvent.ProtoReflect.Descriptor instead.
+func (*NewsEvent) Descriptor() ([]byte, []int) {
 	return file_parser_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TriggerRequest) GetSpecificVkGroupId() string {
+func (x *NewsEvent) GetId() string {
 	if x != nil {
-		return x.SpecificVkGroupId
+		return x.Id
 	}
 	return ""
 }
 
-type TriggerResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *TriggerResponse) Reset() {
-	*x = TriggerResponse{}
-	mi := &file_parser_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TriggerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TriggerResponse) ProtoMessage() {}
-
-func (x *TriggerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_parser_proto_msgTypes[1]
+func (x *NewsEvent) GetText() string {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TriggerResponse.ProtoReflect.Descriptor instead.
-func (*TriggerResponse) Descriptor() ([]byte, []int) {
-	return file_parser_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *TriggerResponse) GetStatus() string {
-	if x != nil {
-		return x.Status
+		return x.Text
 	}
 	return ""
 }
 
-func (x *TriggerResponse) GetMessage() string {
+func (x *NewsEvent) GetVector() []float32 {
 	if x != nil {
-		return x.Message
+		return x.Vector
+	}
+	return nil
+}
+
+func (x *NewsEvent) GetSource() string {
+	if x != nil {
+		return x.Source
 	}
 	return ""
 }
 
-type HealthRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *HealthRequest) Reset() {
-	*x = HealthRequest{}
-	mi := &file_parser_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *HealthRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*HealthRequest) ProtoMessage() {}
-
-func (x *HealthRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_parser_proto_msgTypes[2]
+func (x *NewsEvent) GetCreatedAt() int64 {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
+		return x.CreatedAt
 	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use HealthRequest.ProtoReflect.Descriptor instead.
-func (*HealthRequest) Descriptor() ([]byte, []int) {
-	return file_parser_proto_rawDescGZIP(), []int{2}
-}
-
-type HealthResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	IsAlive       bool                   `protobuf:"varint,1,opt,name=is_alive,json=isAlive,proto3" json:"is_alive,omitempty"`
-	LastParsedAt  string                 `protobuf:"bytes,2,opt,name=last_parsed_at,json=lastParsedAt,proto3" json:"last_parsed_at,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *HealthResponse) Reset() {
-	*x = HealthResponse{}
-	mi := &file_parser_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *HealthResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*HealthResponse) ProtoMessage() {}
-
-func (x *HealthResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_parser_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use HealthResponse.ProtoReflect.Descriptor instead.
-func (*HealthResponse) Descriptor() ([]byte, []int) {
-	return file_parser_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *HealthResponse) GetIsAlive() bool {
-	if x != nil {
-		return x.IsAlive
-	}
-	return false
-}
-
-func (x *HealthResponse) GetLastParsedAt() string {
-	if x != nil {
-		return x.LastParsedAt
-	}
-	return ""
+	return 0
 }
 
 var File_parser_proto protoreflect.FileDescriptor
 
 const file_parser_proto_rawDesc = "" +
 	"\n" +
-	"\fparser.proto\x12\x06parser\"A\n" +
-	"\x0eTriggerRequest\x12/\n" +
-	"\x14specific_vk_group_id\x18\x01 \x01(\tR\x11specificVkGroupId\"C\n" +
-	"\x0fTriggerResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\"\x0f\n" +
-	"\rHealthRequest\"Q\n" +
-	"\x0eHealthResponse\x12\x19\n" +
-	"\bis_alive\x18\x01 \x01(\bR\aisAlive\x12$\n" +
-	"\x0elast_parsed_at\x18\x02 \x01(\tR\flastParsedAt2\x8e\x01\n" +
-	"\x06Parser\x12F\n" +
-	"\x13ForceTriggerParsing\x12\x16.parser.TriggerRequest\x1a\x17.parser.TriggerResponse\x12<\n" +
-	"\vCheckHealth\x12\x15.parser.HealthRequest\x1a\x16.parser.HealthResponseB\x1fZ\x1dgithub.com/pulse-fetch/protosb\x06proto3"
+	"\fparser.proto\x12\x06parser\"~\n" +
+	"\tNewsEvent\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04text\x18\x02 \x01(\tR\x04text\x12\x16\n" +
+	"\x06vector\x18\x03 \x03(\x02R\x06vector\x12\x16\n" +
+	"\x06source\x18\x04 \x01(\tR\x06source\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\x05 \x01(\x03R\tcreatedAtB4Z2github.com/pulse-fetch/protos/pkg/pb/parser;parserb\x06proto3"
 
 var (
 	file_parser_proto_rawDescOnce sync.Once
@@ -235,20 +122,13 @@ func file_parser_proto_rawDescGZIP() []byte {
 	return file_parser_proto_rawDescData
 }
 
-var file_parser_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_parser_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_parser_proto_goTypes = []any{
-	(*TriggerRequest)(nil),  // 0: parser.TriggerRequest
-	(*TriggerResponse)(nil), // 1: parser.TriggerResponse
-	(*HealthRequest)(nil),   // 2: parser.HealthRequest
-	(*HealthResponse)(nil),  // 3: parser.HealthResponse
+	(*NewsEvent)(nil), // 0: parser.NewsEvent
 }
 var file_parser_proto_depIdxs = []int32{
-	0, // 0: parser.Parser.ForceTriggerParsing:input_type -> parser.TriggerRequest
-	2, // 1: parser.Parser.CheckHealth:input_type -> parser.HealthRequest
-	1, // 2: parser.Parser.ForceTriggerParsing:output_type -> parser.TriggerResponse
-	3, // 3: parser.Parser.CheckHealth:output_type -> parser.HealthResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for method output_type
+	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -265,9 +145,9 @@ func file_parser_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_parser_proto_rawDesc), len(file_parser_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   1,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   0,
 		},
 		GoTypes:           file_parser_proto_goTypes,
 		DependencyIndexes: file_parser_proto_depIdxs,

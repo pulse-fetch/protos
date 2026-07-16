@@ -2,26 +2,12 @@ syntax = "proto3";
 
 package parser;
 
-option go_package = "github.com/pulse-fetch/protos";
+option go_package = "github.com/pulse-fetch/protos/pkg/pb/parser;parser";
 
-service Parser {
-  rpc ForceTriggerParsing (TriggerRequest) returns (TriggerResponse);
-
-  rpc CheckHealth (HealthRequest) returns (HealthResponse);
-}
-
-message TriggerRequest {
-  string specific_vk_group_id = 1;
-}
-
-message TriggerResponse {
-  string status = 1;
-  string message = 2;
-}
-
-message HealthRequest {}
-
-message HealthResponse {
-  bool is_alive = 1;
-  string last_parsed_at = 2;
+message NewsEvent {
+  string id = 1;
+  string text = 2;
+  repeated float vector = 3;
+  string source = 4;
+  int64 created_at = 5;
 }
