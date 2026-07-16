@@ -407,7 +407,7 @@ func (x *UpdateResponse) GetStatus() string {
 
 type GetRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -442,11 +442,11 @@ func (*GetRequest) Descriptor() ([]byte, []int) {
 	return file_auth_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *GetRequest) GetId() string {
+func (x *GetRequest) GetId() int64 {
 	if x != nil {
 		return x.Id
 	}
-	return ""
+	return 0
 }
 
 type GetResponse struct {
@@ -529,7 +529,7 @@ const file_auth_proto_rawDesc = "" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"\x1c\n" +
 	"\n" +
 	"GetRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"?\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"?\n" +
 	"\vGetResponse\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email2\x83\x02\n" +
