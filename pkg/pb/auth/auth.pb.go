@@ -405,6 +405,102 @@ func (x *UpdateResponse) GetStatus() string {
 	return ""
 }
 
+type GetRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetRequest) Reset() {
+	*x = GetRequest{}
+	mi := &file_auth_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRequest) ProtoMessage() {}
+
+func (x *GetRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRequest.ProtoReflect.Descriptor instead.
+func (*GetRequest) Descriptor() ([]byte, []int) {
+	return file_auth_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetResponse) Reset() {
+	*x = GetResponse{}
+	mi := &file_auth_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetResponse) ProtoMessage() {}
+
+func (x *GetResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetResponse.ProtoReflect.Descriptor instead.
+func (*GetResponse) Descriptor() ([]byte, []int) {
+	return file_auth_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetResponse) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+func (x *GetResponse) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
 var File_auth_proto protoreflect.FileDescriptor
 
 const file_auth_proto_rawDesc = "" +
@@ -430,13 +526,20 @@ const file_auth_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\bnew_name\x18\x02 \x01(\tR\anewName\"(\n" +
 	"\x0eUpdateResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status2\xd9\x01\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"\x1c\n" +
+	"\n" +
+	"GetRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"?\n" +
+	"\vGetResponse\x12\x1a\n" +
+	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email2\x83\x02\n" +
 	"\x04Auth\x127\n" +
 	"\bRegister\x12\x14.api.RegisterRequest\x1a\x15.api.RegisterResponse\x12.\n" +
 	"\x05Login\x12\x11.api.LoginRequest\x1a\x12.api.LoginResponse\x121\n" +
 	"\x06Delete\x12\x12.api.DeleteRequest\x1a\x13.api.DeleteResponse\x125\n" +
 	"\n" +
-	"UpdateName\x12\x12.api.UpdateRequest\x1a\x13.api.UpdateResponseB\x1fZ\x1dgithub.com/pulse-fetch/protosb\x06proto3"
+	"UpdateName\x12\x12.api.UpdateRequest\x1a\x13.api.UpdateResponse\x12(\n" +
+	"\x03Get\x12\x0f.api.GetRequest\x1a\x10.api.GetResponseB\x1fZ\x1dgithub.com/pulse-fetch/protosb\x06proto3"
 
 var (
 	file_auth_proto_rawDescOnce sync.Once
@@ -450,7 +553,7 @@ func file_auth_proto_rawDescGZIP() []byte {
 	return file_auth_proto_rawDescData
 }
 
-var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_auth_proto_goTypes = []any{
 	(*RegisterRequest)(nil),  // 0: api.RegisterRequest
 	(*RegisterResponse)(nil), // 1: api.RegisterResponse
@@ -460,18 +563,22 @@ var file_auth_proto_goTypes = []any{
 	(*DeleteResponse)(nil),   // 5: api.DeleteResponse
 	(*UpdateRequest)(nil),    // 6: api.UpdateRequest
 	(*UpdateResponse)(nil),   // 7: api.UpdateResponse
+	(*GetRequest)(nil),       // 8: api.GetRequest
+	(*GetResponse)(nil),      // 9: api.GetResponse
 }
 var file_auth_proto_depIdxs = []int32{
 	0, // 0: api.Auth.Register:input_type -> api.RegisterRequest
 	2, // 1: api.Auth.Login:input_type -> api.LoginRequest
 	4, // 2: api.Auth.Delete:input_type -> api.DeleteRequest
 	6, // 3: api.Auth.UpdateName:input_type -> api.UpdateRequest
-	1, // 4: api.Auth.Register:output_type -> api.RegisterResponse
-	3, // 5: api.Auth.Login:output_type -> api.LoginResponse
-	5, // 6: api.Auth.Delete:output_type -> api.DeleteResponse
-	7, // 7: api.Auth.UpdateName:output_type -> api.UpdateResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
+	8, // 4: api.Auth.Get:input_type -> api.GetRequest
+	1, // 5: api.Auth.Register:output_type -> api.RegisterResponse
+	3, // 6: api.Auth.Login:output_type -> api.LoginResponse
+	5, // 7: api.Auth.Delete:output_type -> api.DeleteResponse
+	7, // 8: api.Auth.UpdateName:output_type -> api.UpdateResponse
+	9, // 9: api.Auth.Get:output_type -> api.GetResponse
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -488,7 +595,7 @@ func file_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_proto_rawDesc), len(file_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

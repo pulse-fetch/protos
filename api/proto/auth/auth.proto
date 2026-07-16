@@ -7,6 +7,7 @@ service Auth{
   rpc Login(LoginRequest) returns (LoginResponse);
   rpc Delete(DeleteRequest) returns (DeleteResponse);
   rpc UpdateName(UpdateRequest) returns (UpdateResponse);
+  rpc Get(GetRequest) returns (GetResponse);
 }
 
 message RegisterRequest{
@@ -42,4 +43,13 @@ message UpdateRequest{
 
 message UpdateResponse{
   string status = 1;
+}
+
+message GetRequest{
+  string id = 1;
+}
+
+message GetResponse{
+  string username = 1;
+  string email = 2;
 }
